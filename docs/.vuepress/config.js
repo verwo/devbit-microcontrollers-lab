@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'devbit-microcontrollers-lab',
+  title: 'Microcontrollers Lab Exercises',
   description: 'Lab exercises for the devbit microcontrollers course',
   themeConfig: {
     nav: [

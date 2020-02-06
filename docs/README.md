@@ -14,3 +14,13 @@ title: Home
 ![Nucleo L476RG prototyping board](./assets/l476rg.jpg)
 
 Figure 1: The Nucleo L476RG prototyping board
+
+::: warning Assignment
+In the lab, assignments are used to check your progress in the lab. Upon completion of the assignment, call the lecturer to check your work.
+:::
+
+::: tip
+It's the journey that matters, not the destination.
+
+Share tips with your colleagues, do not share code. Give attribution where it's due.
+:::

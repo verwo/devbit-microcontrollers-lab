@@ -7,9 +7,7 @@ module.exports = {
       { text: 'Toledo', link: 'https://www.vives.be/en/tools/toledo' },
       { text: 'License', link: '/LICENSE.md' },
     ],
-    sidebar: [
-      ['/', 'Home'],
-    ],
+    sidebar: [['/', 'Home'], ['/lab-1/', 'Lab 1']],
     repo: 'https://github.com/pcordemans/devbit-microcontrollers-lab',
     docsDir: 'docs',
     docsBranch: 'master'

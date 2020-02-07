@@ -2,7 +2,7 @@
 title: Lab 1
 ---
 
-# Lab 1
+# Lab 1: The Mbed Menace
 
 ## Goal
 
@@ -98,13 +98,28 @@ Following these instructions, you will install the mbed-cli toolchain and build 
     Figure 4: Find the target name on the platform website.
 1. Execute the compilation command:
     ```bash
-        mbed compile --target nucleo_l476rg --toolchain GCC_ARM --flash
+        mbed compile --target NUCLEO_L476RG --toolchain GCC_ARM --flash
     ```
 
     ::: tip
     If your board is plugged in the **--flash** flag will automagically copy the *.bin* file to the board. If you did not include this flag, you will have to manually copy the *.bin* file from the **./BUILD/NUCLEO_L476RG/GCC_ARM** folder.
     :::
 1. Check if the blinky led program is correctly loaded on your board.
+
+::: tip
+Compiling with a **mbed compile** command which has to include the target and toolchain every time is not user friendly. Use the **mbed config** command to set a default. For example:
+```bash
+mbed config target NUCLEO_L476RG
+mbed config --global toolchain GCC_ARM 
+```
+These commands set a project local default target and a global default toolchain.
+
+Then you can just compile with:
+
+```bash
+mbed compile
+```
+:::
 
 ## Serial communication
 
@@ -169,4 +184,39 @@ Next, set up serial communication between your PC and the Nucleo board.
 
 ## Explore peripherals
 
+Add some peripherals with the [mbed Application Shield](https://os.mbed.com/components/mbed-Application-Shield/), import the example programs and finally combine these peripherals in a single program.
 
+1. Libraries exist for all components on the mbed Application Shield. These classes are not included in the standard *mbed* library. Use the online compiler to import the RGB LED, LM75B Temperature sensor and the Joystick example programs. 
+1. The libraries can also be imported with the *import library* into an existing program. This copies the necessary library files into the project directory. 
+    ![Import library](assets/importLibrary.png)
+1. Libraries are included in code with an **#include** directive. For example to include the C12832 LCD display:
+    ```cpp
+    #include "C12832.h"
+    ```
+::: warning Assignment
+Make a new program which allows the potentiometers to control the color of the RGB LED. Also, show the values of the potentiometers on the LCD display.
+:::
+
+1. Programs can also be imported using the mbed cli. To import a specific version append with the version number:
+    ```bash
+    mbed import https://github.com/ARMmbed/mbed-os-example-blinky#mbed-os-5.11.0
+    ```
+1. Using the mbed cli, it is also possible to add libraries. For example:
+    ```bash
+    mbed add http://os.mbed.com/users/chris/code/C12832/
+    ```
+
+::: warning Assignment
+Import your program from the mbed online compiler to your local machine using the mbed cli.
+:::
+
+## More information
+
+1. [An introduction to Arm Mbed OS 5](https://os.mbed.com/docs/mbed-os/v5.15/introduction/index.html)
+1. [Mbed Full API list](https://os.mbed.com/docs/mbed-os/v5.15/apis/index.html)
+1. [Working with Mbed CLI](https://os.mbed.com/docs/mbed-os/v5.15/tools/working-with-mbed-cli.html)
+
+## Extra
+
+1. Use the x,y,z acceleration values of the accelerometer to control the color of the RGB LED.
+1. Go to the lecturer and ask for the K64F board. Try to run your programs on the K64F board.

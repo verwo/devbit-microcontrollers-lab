@@ -117,7 +117,7 @@ These commands set a project local default target and a global default toolchain
 Then you can just compile with:
 
 ```bash
-mbed compile
+mbed compile --flash
 ```
 :::
 

@@ -25,7 +25,7 @@ These steps will guide you to build and run a first mbed program from the browse
 
 1. Create a new program. Select the *mbed OS Blinky LED HelloWorld* template.
 
-    ![Create a new program: Blinky LED](assets/newProgram.png)
+    ![Create a new program: Blinky LED](./assets/newProgram.png)
 
     Figure 2: Select a template and give the new program a name.
 

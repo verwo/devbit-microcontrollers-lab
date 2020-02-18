@@ -26,9 +26,13 @@ title: Lab-2
             ```bash
             sudo apt-get update
             ```
-        1. Install g++
+        1. Install g++, this is the C++ compiler
             ```bash
             sudo apt-get install g++
+            ```
+        1. Install make, this is a build tool, which automates the build process
+            ```bash
+            sudo apt-get install make
             ```
     1. On Mac OS X:
         1. Experimental: Try installing XCode. Inform me if it worked.

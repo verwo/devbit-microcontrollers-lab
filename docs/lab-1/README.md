@@ -47,7 +47,8 @@ These steps will guide you to build and run a first mbed program from the browse
         // Initialize the digital pin LED1 as an output
         DigitalOut led(LED1);
 
-        while (true) {
+        while (true) 
+        {
             led = !led;
             thread_sleep_for(BLINKING_RATE_MS);
         }
@@ -147,7 +148,8 @@ Next, set up serial communication between your PC and the Nucleo board.
         Serial pc(USBTX, USBRX);
         // Print a string on the serial port
         pc.printf("Hello World!\n");
-        while (true) {
+        while (true) 
+        {
             led = !led;
             thread_sleep_for(BLINKING_RATE_MS);
         }

@@ -64,7 +64,7 @@ title: Lab-2
     :::
 1. Run the binary
     ```bash
-    .\a.out
+    ./a.out
     ```
 ::: warning Assignment
 Write a program which displays *Hello [insert your name here]!*

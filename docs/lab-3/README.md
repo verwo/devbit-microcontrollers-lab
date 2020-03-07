@@ -91,89 +91,15 @@ Use three arrays: frequencies, lengths and delays
 1. Work together and connect both boards (client & server) to a switch.
     ![Client and Server boards](./assets/client-server.png)
 
-    Figure 2: The Client initiates communication with the Server, which listens and replies to the Client. Each have a unique IP address. The Server listens on a chosen port, while the client must connect to that port.
+    Figure 2: The Client initiates communication with the Server, which listens and replies to the Client. Each has a unique IP address. The Server listens on a chosen port, while the client must connect to that port.
 
     :::danger Warning
     Choose unique IP addresses for each board in order to avoid conflicts.
     :::
-1. Example Server code:
-    ```cpp
-    #include "mbed.h"
-    #include "EthernetInterface.h"
-    
-    int main()
-    {
-        printf("Server example\n\r");
-        
-        EthernetInterface eth;
+1. Example [TCP Server](https://os.mbed.com/users/pcordemans/code/tcp-server/) 
+1. Example [TCP Client](https://os.mbed.com/users/pcordemans/code/tcp-client/)
+1. Expand the TCP examples: read the temperature sensor from the server and display the temperature on the client. 
 
-        //choose a unique IP address in the same network
-        // set_network(HOST IP, SUBNET MASK, DEFAULT GATEWAY)
-        eth.set_network("192.168.0.40","255.255.255.0","192.168.0.1");
-        eth.connect();
-        
-        printf("The Server IP address is '%s'\n\r", eth.get_ip_address());
-        
-        TCPServer srv(&eth);  
-        
-        //choose a port to listen to
-        srv.bind(4000);
-        
-        srv.listen();
-        
-        //server listens indefinitely
-        while(true){
-            TCPSocket client;
-            SocketAddress client_addr;
-            char *buffer = "Hello TCP client!\r\n";
-            
-            //setup connection
-            srv.accept(&client, &client_addr);
-            
-            printf("Accepted %s:%d\n\r", client_addr.get_ip_address(), 
-                        client_addr.get_port());
-            
-            // send reply to client            
-            client.send(buffer, 256);
-        
-            client.close();
-            
-        }
-    }
-    ```
-1. Example Client code:
-    ```cpp
-    #include "mbed.h"
-    #include "EthernetInterface.h"
-
-    int main()
-    {
-        printf("Client example\n\r");
-
-        EthernetInterface eth;
-        //choose a unique IP address in the same network
-        // set_network(HOST IP, SUBNET MASK, DEFAULT GATEWAY)
-        eth.set_network("192.168.0.39","255.255.255.0","192.168.0.1");
-        eth.connect();
-
-        printf("The client IP address is '%s'\n\r", eth.get_ip_address());
-
-        TCPSocket socket;
-
-        socket.open(&eth);
-        //connect to server, use the server IP and chosen port
-        socket.connect("192.168.0.40",4000);
-
-        char rbuffer[64];
-
-        //receive the data from the server
-        int rcount = socket.recv(rbuffer, sizeof rbuffer);
-        printf("received: %d\r\n", rcount);
-        printf(rbuffer);
-
-        socket.close();
-
-    }
-    ```
-
-1. Expand the TCP examples: read the temperature sensor from the server and display the temperature on the client.  
+:::tip string is not a char array
+One of the easiest ways to manipulate strings is to use the C++ [string](http://www.cplusplus.com/reference/string/string/) class. However a C++ **string** is not an array of characters. The *send* and *recv* methods expect a **char** array so a **string** needs to be converted. The **string** class has a method *c_str* which returns the **char** array equivalent of the **string**.
+:::

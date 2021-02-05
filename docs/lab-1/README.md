@@ -196,7 +196,7 @@ Add some peripherals with the [mbed Application Shield](https://os.mbed.com/comp
     #include "C12832.h"
     ```
 ::: warning Assignment
-Make a new program which allows the potentiometers to control the color of the RGB LED. Also, show the values of the potentiometers on the LCD display.
+Make a new program which allows the potentiometers to control the color of the RGB LED. Also, show the values of the potentiometers on the LCD display or in Putty.
 :::
 
 1. Programs can also be imported using the mbed cli. To import a specific version append with the version number:

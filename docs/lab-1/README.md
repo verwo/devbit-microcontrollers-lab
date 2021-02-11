@@ -229,6 +229,14 @@ Make a new program which allows the potentiometers to control the color of the R
 Import your program from the mbed online compiler to your local machine using the mbed cli.
 :::
 
+:::tip
+In order to import the program to the mbed cli you need to publish your project in the mbed repository. 
+
+1. Commit the code, using the commit button in the online IDE.
+1. Publish the project, using the down arrow next to the commit button. 
+1. Go to the webpage of your published project, and click import with Mbed cli. Use the suggested command.
+:::
+
 ## More information
 
 1. [An introduction to Arm Mbed OS 5](https://os.mbed.com/docs/mbed-os/v5.15/introduction/index.html)

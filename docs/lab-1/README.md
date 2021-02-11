@@ -71,6 +71,14 @@ Following these instructions, you will install the mbed-cli toolchain and build 
     ::: tip Pro Tip
     Do not install the mbed cli in a path with spaces or characters other than alphanumeric, dash or underscore.
     :::
+
+    ::: tip For experts
+    The mbed installer still installs Python 2.7. Support for Python 2.7 has ended as of 01/01/2020.
+
+    You can install the mbed cli toolchain with a newer version of Python yourself with these [manual installation instructions.](https://os.mbed.com/docs/mbed-os/v6.7/build-tools/install-and-set-up.html). It is important to install Python version **3.7.x**. It is recommended to use a virtual environment such as [conda](https://docs.conda.io/en/latest/miniconda.html) to create a specific virtual environment for mbed.
+
+    There is a new version of [mbed cli](https://os.mbed.com/docs/mbed-os/v6.7/build-tools/mbed-cli-2.html), which is still under development and has only official support for a limited set of boards and Mbed OS 6. If you want to use mbed cli version 2: here be dragons. 
+    :::
 1. Open a command line shell, e.g. Powershell and execute: 
 
     ```bash

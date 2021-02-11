@@ -163,6 +163,15 @@ Next, set up serial communication between your PC and the Nucleo board.
         }
     }
     ```
+    ::: tip Mbed OS6
+    Mbed OS6 does not have a Serial class. As an alternative you can use the [BufferedSerial](https://os.mbed.com/docs/mbed-os/v6.7/apis/serial-uart-apis.html) class. The BufferedSerial class does not offer a formatted print (printf), rather you can use the write method. The write method requires two parameters, a char array and the number of characters to be sent. An example:
+
+    ```cpp
+    BufferedSerial pc(USBTX, USBRX);
+    pc.write("Hello World!\n", 13);
+    ```
+    :::
+
 1. Compile and flash your program to the board.
 1. Download the [Putty](https://putty.org/) terminal application and run it.
 1. Check on which COM port the mbed is registered:

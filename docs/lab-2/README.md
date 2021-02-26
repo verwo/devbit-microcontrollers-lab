@@ -148,7 +148,7 @@ Output: 0x5A
 :::
 
 ::: warning Assignment
-Write a function *mirrornibble* which mirrors the lower nibble in a word in the upper nibble of a byte. 
+Write a function *mirrornibble* which mirrors the lower nibble in a byte to the upper nibble of that byte. 
 
 For example:
 Input: 0x05

@@ -11,8 +11,7 @@ module.exports = {
       ['/', 'Home'],
       ['/lab-1/', 'Lab 1'],
       ['/lab-2/', 'Lab 2'],
-      ['/lab-3/', 'Lab 3'],
-      ['/lab-4/', 'Lab 4']
+      ['/lab-3/', 'Lab 3']
     ],
     repo: 'https://github.com/pcordemans/devbit-microcontrollers-lab',
     docsDir: 'docs',

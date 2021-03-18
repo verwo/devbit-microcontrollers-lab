@@ -1,105 +1,67 @@
 ---
-title: lab-3
+title: lab 3
 ---
 
 # Lab 3: Revenge of the Mbed
 
 ## Goal
 
-1. Implement a binary counter, Gray code counter, and Snake counter on 4 leds  
-1. Play a tune on the application board.
-1. Setup TCP communication, between a client and a server
+1. Assemble the protoshield.
+1. Write low-level code to control the GPIO peripheral.
+    1. Configure a digital output
+    1. Read from a digital input
 
+## GitHub Classroom
+
+1. Follow the [Classroom URL](https://classroom.github.com/a/LXgJqJxo), accept the assignment with your name and link your GitHub account.
+1. Clone the repository.
+1. Follow the instructions in the README.md to build the project.
+
+## Adafruit protoshield
+
+Follow the [instructions](https://learn.adafruit.com/adafruit-proto-shield-arduino/solder-it) to assemble the Adafruit Protoshield.
 
 :::warning Assignment
-This lab does not have any assignments and will not be graded. Enjoy!
+Show your assembled protoshield.
 :::
 
-## LPC1768
+## Low level GPIO
 
-1. Choose the [online](../lab-1/#mbed-blinky) or the [offline](../lab-1/#mbed-cli) Mbed development environment.
-1. Select the [LPC1768](https://os.mbed.com/platforms/mbed-LPC1768/) as the target board.
-    1. For the Mbed CLI compile with:
-    ```bash
-    mbed compile --target lpc1768 --toolchain GCC_ARM --flash
-    ```
-
-## Watch das blinking leds
-
-![The LPC1768 board](./assets/mbed.png)
-
-Figure 1: The LPC1768 board contains four leds.
-
-1. Implement a binary counter on the four available leds (LED1, LED2, LED3 and LED4).
-    1. Count from 0 to 15 in binary and start over again.
-    1. LED1 represents the least significant bit, LED4 the most significant.
-    1. For example: LED1 is ON, all other leds are OFF = '1', LED4 and LED1 are on, the other leds are off = '9'.
-1. Implement a [Gray](https://en.wikipedia.org/wiki/Gray_code) code counter on the four available leds.
-1. Implement a Snake counter on the four leds.
-    |Decimal| 	Binary | Gray | Snake |
-    | --- | --- |   --- |  --- |
-    | 0 | 	0000 |	0000 | 0000 |
-    | 1 | 	0001 | 	0001 | 0001 |
-    | 2 | 	0010 |	0011 | 0011 |
-    | 3 | 	0011 |	0010 | 0111 |
-    | 4 | 	0100 |	0110 | 1111 |
-    | 5 | 	0101 |	0111 | 1110 |
-    | 6 | 	0110 |	0101 | 1100 |
-    | 7 | 	0111 |	0100 | 1000 |
-    | 8 | 	1000 |	1100 | 0000 |
-    | 9 | 	1001 |	1101 | 0001 |
-    | 10 | 	1010 |	1111 | 0011 |
-    | 11 | 	1011 |	1110 | 0111 |
-    | 12 | 	1100 |	1010 | 1111 |
-    | 13 | 	1101 |	1011 | 1110 |
-    | 14 | 	1110 |	1001 | 1100 |
-    | 15 | 	1111 |	1000 | 1000 |
-
-## Play a tune
-
-1. Use the speaker on the [Mbed Application Board ](https://os.mbed.com/components/mbed-Application-Board/) to play the following tune. 
-    1. Frequency is selected by period = 1.0  / frequency.
-    1. Length is selected by setting PWM out at 0.5 and waiting the indicated number of milliseconds.
-    1. Delay is selected by setting PWM out at 0 and waiting the indicated number of milliseconds.
-        |Note| 	Frequency (Hz) | Length (ms) | Delay (ms) |
-        | --- | --- |   --- |  --- |
-        | 0 | 	110 |	480 | 100 |
-        | 1 | 	110 | 	480 | 100 |
-        | 2 | 	110 |	480 | 100 |
-        | 3 | 	98 |	360 | 75 |
-        | 4 | 	130 |	120 | 100 |
-        | 5 | 	110 |	480 | 100 |
-        | 6 | 	98 |	360 | 75 |
-        | 7 | 	130 |	120 | 100 |
-        | 8 | 	110 |	960 | 100 |
-        | 9 | 	165 |	480 | 100 |
-        | 10 | 	165 |	480 | 100 |
-        | 11 | 	165 |	480 | 100 |
-        | 12 | 	175 |	360 | 75 |
-        | 13 | 	130 |	120 | 100 |
-        | 14 | 	104 |	480 | 100 |
-        | 15 | 	98 |	360 | 75 |
-        | 16 | 	130 |	120 | 100 |
+For the following assignments you may not use **mbed.h**.
 
 :::tip
-Use three arrays: frequencies, lengths and delays
+To solve the assignments you may not use **mbed.h**. However if you want to test the hardware, you may use the Mbed library.
 :::
 
-## TCP communication
+Connect the green led and red led to a pin of your choice. 
 
-1. Use the Ethernet interface on the Mbed Application Board to set up [TCP communication](https://os.mbed.com/docs/mbed-os/v5.15/apis/network-socket.html) between a client and server. 
-1. Work together and connect both boards (client & server) to a switch.
-    ![Client and Server boards](./assets/client-server.png)
+Use the [example project](https://microcontrollers.netlify.app/digital-io/#gpio) to write the following program.
 
-    Figure 2: The Client initiates communication with the Server, which listens and replies to the Client. Each has a unique IP address. The Server listens on a chosen port, while the client must connect to that port.
+The green led blinks at a frequency of 2 Hz.
+The red led blinks at a frequency of 1 Hz.
 
-    :::danger Warning
-    Choose unique IP addresses for each board in order to avoid conflicts.
-    :::
-1. Example [TCP Server](https://os.mbed.com/users/pcordemans/code/tcp-server/) 
-1. Example [TCP Client](https://os.mbed.com/users/pcordemans/code/tcp-client/)
-1. Expand the TCP examples: read the temperature sensor from the server and display the temperature on the client. 
+:::warning Assignment
+Show the blinking leds. Add the schematic of your Protoshield to the REPORT.md
+:::
 
-:::tip string is not a char array
-One of the easiest ways to manipulate strings is to use the C++ [string](http://www.cplusplus.com/reference/string/string/) class. However a C++ **string** is not an array of characters. The *send* and *recv* methods expect a **char** array so a **string** needs to be converted. The **string** class has a method *c_str* which returns the **char** array equivalent of the **string**.
+Change the wait function so the parameter indicates microseconds instead of milliseconds.
+
+:::warning Assignment
+Use the oscilloscope to measure a 200 µs delay. Generate a square wave on a pin with a period of 200µs. Add the scope image to REPORT.md.
+:::
+
+Connect a push button to a pin. Read the value of the push button.
+
+:::warning Assignment
+If the value of the push button is '0' turn on the green led, if it is '1' turn on the red led.
+:::
+
+Build a binary counter using the green led, red led and LD2 of the Nucleo. The green led is the MSB and LD2 the LSB.
+
+:::warning Assignment
+Make the counter count at a speed of 1 Hz.
+:::
+
+:::warning Assignment
+Start the binary counter when pressing the button. Stop the binary counter when pressing the button again.
 :::

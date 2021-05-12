@@ -1,19 +1,14 @@
 ---
-title: lab-3
+title: lab-5
 ---
 
-# Lab 3: Revenge of the Mbed
+# Lab 5: The Mbed striks back
 
 ## Goal
 
 1. Implement a binary counter, Gray code counter, and Snake counter on 4 leds  
 1. Play a tune on the application board.
 1. Setup TCP communication, between a client and a server
-
-
-:::warning Assignment
-This lab does not have any assignments and will not be graded. Enjoy!
-:::
 
 ## LPC1768
 
@@ -55,6 +50,10 @@ Figure 1: The LPC1768 board contains four leds.
     | 14 | 	1110 |	1001 | 1100 |
     | 15 | 	1111 |	1000 | 1000 |
 
+:::warning Assignment
+Write a program which controls the binary, gray and snake counter with a button.
+:::
+
 ## Play a tune
 
 1. Use the speaker on the [Mbed Application Board ](https://os.mbed.com/components/mbed-Application-Board/) to play the following tune. 
@@ -85,6 +84,10 @@ Figure 1: The LPC1768 board contains four leds.
 Use three arrays: frequencies, lengths and delays
 :::
 
+:::warning Assignment
+Play the tune on the speaker.
+:::
+
 ## TCP communication
 
 1. Use the Ethernet interface on the Mbed Application Board to set up [TCP communication](https://os.mbed.com/docs/mbed-os/v5.15/apis/network-socket.html) between a client and server. 
@@ -98,7 +101,10 @@ Use three arrays: frequencies, lengths and delays
     :::
 1. Example [TCP Server](https://os.mbed.com/users/pcordemans/code/tcp-server/) 
 1. Example [TCP Client](https://os.mbed.com/users/pcordemans/code/tcp-client/)
-1. Expand the TCP examples: read the temperature sensor from the server and display the temperature on the client. 
+
+:::warning Assignment
+Expand the TCP examples: read the temperature sensor from the server and display the temperature on the client. 
+:::
 
 :::tip string is not a char array
 One of the easiest ways to manipulate strings is to use the C++ [string](http://www.cplusplus.com/reference/string/string/) class. However a C++ **string** is not an array of characters. The *send* and *recv* methods expect a **char** array so a **string** needs to be converted. The **string** class has a method *c_str* which returns the **char** array equivalent of the **string**.

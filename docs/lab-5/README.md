@@ -2,7 +2,7 @@
 title: lab-5
 ---
 
-# Lab 5: The Mbed striks back
+# Lab 5: The Mbed strikes back
 
 ## Goal
 

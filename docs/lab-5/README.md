@@ -12,7 +12,11 @@ title: lab-5
 
 ## LPC1768
 
-1. Choose the [online](../lab-1/#mbed-blinky) or the [offline](../lab-1/#mbed-cli) Mbed development environment.
+1. Use mbed OS 5, the LPC1768 and the mbed application board for the following exercises.
+    1. Import the blinking led project with Mbed CLI:
+    ```bash
+    mbed import https://github.com/ARMmbed/mbed-os-example-blinky
+    ```
 1. Select the [LPC1768](https://os.mbed.com/platforms/mbed-LPC1768/) as the target board.
     1. For the Mbed CLI compile with:
     ```bash
@@ -51,7 +55,7 @@ Figure 1: The LPC1768 board contains four leds.
     | 15 | 	1111 |	1000 | 1000 |
 
 :::warning Assignment
-Write a program which controls the binary, gray and snake counter with a button.
+Write a program which displays the binary, gray and snake counter with a chosen frequency.
 :::
 
 ## Play a tune

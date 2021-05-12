@@ -83,6 +83,7 @@ Write a program which displays the binary, gray and snake counter with a chosen 
         | 14 | 	104 |	480 | 100 |
         | 15 | 	98 |	360 | 75 |
         | 16 | 	130 |	120 | 100 |
+        | 17 | 	98 |	960 | 75 |
 
 :::tip
 Use three arrays: frequencies, lengths and delays

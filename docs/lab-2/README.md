@@ -2,41 +2,12 @@
 title: Lab-2
 ---
 
-# Lab 2: Attack of the Mbeds
+# Lab 2: Mbed at the end of the universe
 
 ## Goal
 
-1. Install the build tools for C++ on host
 1. Write C++ code to manipulate bits
 1. Learn using pointers in C++ code
-
-## Build tools
-
-1. Install gcc, g++ and make, choose your OS:
-    1. On Windows:
-        1. Enable the feature Windows Subsystem for Linux, open Powershell as an Administrator:
-            ```bash
-            Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-            ```
-        1. Restart when prompted
-        1. Go to the Microsoft store, install Ubuntu
-        1. Launch Ubuntu and follow the Ubuntu instructions     
-    1. On Ubuntu:
-        1. Update your package lists 
-            ```bash
-            sudo apt-get update
-            ```
-        1. Install g++, this is the C++ compiler
-            ```bash
-            sudo apt-get install g++
-            ```
-        1. Install make, this is a build tool, which automates the build process
-            ```bash
-            sudo apt-get install make
-            ```
-    1. On Mac OS X:
-        1. Experimental: Try installing XCode. Inform me if it worked.
-    
 
 ## Bit manipulation
 
@@ -88,7 +59,7 @@ title: Lab-2
     }
     ```
 
-1. For the following assignments, clone the [test-bit-manipulations](https://github.com/pcordemans/test-bit-manipulations) repository.
+1. For the following assignments, accept the GitHub Classroom repository associated with lab 2.
 1. To build the project and run the tests
     ```bash
     make
@@ -104,7 +75,7 @@ Write a function *bitclear* to clear a bit at a given position in a word.
 :::
 
 ::: warning Assignment
-Write a function *swapnibble* which swaps the upper with the lower nibble in a byte. 
+Write a function *swapnibble* which swaps the upper with the lower nibble in a byte.
 
 For example:
 Input: 0xA5
@@ -112,7 +83,7 @@ Output: 0x5A
 :::
 
 ::: warning Assignment
-Write a function *mirrornibble* which mirrors the lower nibble in a byte to the upper nibble of that byte. 
+Write a function *mirrornibble* which mirrors the lower nibble in a byte to the upper nibble of that byte.
 
 For example:
 Input: 0x05

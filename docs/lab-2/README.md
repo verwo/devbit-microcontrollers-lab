@@ -36,43 +36,7 @@ title: Lab-2
             ```
     1. On Mac OS X:
         1. Experimental: Try installing XCode. Inform me if it worked.
-
-    ::: tip
-
-    Windows Subsystem for Linux (WSL) is a lightweight Virtual Machine to run Linux (development) tools. It is not a complete Virtual Machine and is not intended for production purposes, like running an Apache webserver. 
-
-    While in the Microsoft Store, install the Windows Terminal app. This terminal allows you to run Powershell, WSL and CMD and provide a nice interface to these shells. Did you know [a terminal is not a shell](https://www.hanselman.com/blog/WhatsTheDifferenceBetweenAConsoleATerminalAndAShell.aspx)?
-
-    More information on [WSL](https://www.hanselman.com/blog/CoolWSLWindowsSubsystemForLinuxTipsAndTricksYouOrIDidntKnowWerePossible.aspx) and [Windows Terminal](https://www.hanselman.com/blog/ItsTimeForYouToInstallWindowsTerminal.aspx). 
-
-    :::
-
-1. Write a Hello World program in a file called **hello.cpp**.
-    ```cpp
-    #include <iostream>
-    using namespace std;
     
-    int main() 
-    {
-
-        cout << "Hello World! \n"; 
-        return 0;
-    }
-    ```
-1. Locate the file **hello.cpp** and run:
-    ```bash
-    g++ hello.cpp
-    ```
-    ::: tip
-    If you are using WSL, your Windows file system can be found at ```/mnt```, for example: ```/mnt/c/```
-    :::
-1. Run the binary
-    ```bash
-    ./a.out
-    ```
-::: warning Assignment
-Write a program which displays *Hello [insert your name here]!*
-:::
 
 ## Bit manipulation
 

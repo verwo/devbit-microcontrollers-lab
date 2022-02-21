@@ -22,6 +22,7 @@ title: lab-5
     ```bash
     mbed compile --target lpc1768 --toolchain GCC_ARM --flash
     ```
+1. If you are using Windows, you may need to install the [Windows Serial Driver](https://os.mbed.com/docs/mbed-os/v5.15/tutorials/windows-serial-driver.html). It might be necessary to reboot your system after installation.
 
 ## Watch das blinking leds
 

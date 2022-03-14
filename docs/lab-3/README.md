@@ -2,7 +2,7 @@
 title: lab 3
 ---
 
-# Lab 3: Revenge of the Mbed
+# Lab 3: Mostly Mbed
 
 ## Goal
 
@@ -13,7 +13,7 @@ title: lab 3
 
 ## GitHub Classroom
 
-1. Follow the [Classroom URL](https://classroom.github.com/a/LXgJqJxo), accept the assignment with your name and link your GitHub account.
+1. Follow the [Classroom URL](https://classroom.github.com/a/f2Uqq7sV), accept the assignment with your name and link your GitHub account.
 1. Clone the repository.
 1. Follow the instructions in the README.md to build the project.
 
@@ -55,6 +55,8 @@ Connect a push button to a pin. Read the value of the push button.
 :::warning Assignment
 If the value of the push button is '0' turn on the green led, if it is '1' turn on the red led.
 :::
+
+## Extra
 
 Build a binary counter using the green led, red led and LD2 of the Nucleo. The green led is the MSB and LD2 the LSB.
 

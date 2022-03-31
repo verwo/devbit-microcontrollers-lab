@@ -2,12 +2,31 @@
 title: Lab 4
 ---
 
-# Lab 4: A new Mbed
+# Lab 4: So long and thanks for all the Mbed
 
 ## Goal
 
 1. Use timers
 1. Explore interrupts
+
+## Approach
+
+Write a program for the assignments. Using both the [Mbed libraries](https://os.mbed.com/docs/mbed-os/v5.15/apis/drivers.html) and providing the low level code yourself.
+
+1. Accept the [GitHub Classroom assignment](https://classroom.github.com/a/uh99BfFC)
+1. Clone the GitHub Classroom repository
+    ```bash
+    git clone [[git URL]]
+    ```
+1. Make a branch per solution to the assignment
+    ```bash
+    git checkout -b [[branchname]]
+    git checkout main
+    ```
+1. Push the results
+    ```bash
+    git push origin main
+    ```
 
 ## Timer interrupt
 
@@ -23,17 +42,9 @@ Show the LEDs. What is frequency of the count signal?
 Toggle a LED using a button using the external interrupt rather than polling.
 :::
 
-:::warning Assignment
-Show the flank of the input signal on a scope. What seems to be the problem?
-:::
-
-:::warning Assignment
-Debounce the input signal using a timer interrupt.
-:::
-
 ## Timer counter
 
-Connect a button. Pressing the button starts a timer. Pressing it again, stops the timer and outputs the timer value. You may use the [Serial](https://os.mbed.com/docs/mbed-os/v5.15/apis/serial.html) class of the Mbed library to output the timer value. Pressing it again resets the timer to start over.
+Connect a button. Pressing the button starts a timer. Pressing it again, stops the timer and outputs the timer value. Use *printf* to output the timer value. Pressing the button again resets the timer to start over.
 
 :::warning Assignment
 Try to press twice to get as close to a period of 1 second as possible.

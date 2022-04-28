@@ -2,66 +2,89 @@
 title: lab-5
 ---
 
-# Lab 5: The Mbed strikes back
+# Lab 5: Life, the Universe and Mbed
 
 ## Goal
 
-1. Implement a binary counter, Gray code counter, and Snake counter on 4 leds  
-1. Play a tune on the application board.
-1. Setup TCP communication, between a client and a server
+1. Explore PWM
+1. Explore ADC
+1. Explore UART
 
-## LPC1768
+## Prelude
 
-1. Use mbed OS 5, the LPC1768 and the mbed application board for the following exercises.
-    1. Import the blinking led project with Mbed CLI:
+1. Create a new project named **lab5** with mbed OS version 6.15.1
+
     ```bash
-    mbed import https://github.com/ARMmbed/mbed-os-example-blinky
+    mbed new lab5
     ```
-1. Select the [LPC1768](https://os.mbed.com/platforms/mbed-LPC1768/) as the target board.
-    1. For the Mbed CLI compile with:
+
+1. Create a **main.cpp** file:
+
+    ```cpp
+    #include "mbed.h"
+
+    int main(){
+        printf(
+            "Mbed OS version %d.%d.%d\n",
+            MBED_MAJOR_VERSION,
+            MBED_MINOR_VERSION,
+            MBED_PATCH_VERSION
+        );
+        while(true);
+    }
+    ```
+
+1. Compile and flash
+
     ```bash
-    mbed compile --target lpc1768 --toolchain GCC_ARM --flash
+    mbed compile -f
     ```
-1. If you are using Windows, you may need to install the [Windows Serial Driver](https://os.mbed.com/docs/mbed-os/v5.15/tutorials/windows-serial-driver.html). It might be necessary to reboot your system after installation.
-
-## Watch das blinking leds
-
-![The LPC1768 board](./assets/mbed.png)
-
-Figure 1: The LPC1768 board contains four leds.
-
-1. Implement a binary counter on the four available leds (LED1, LED2, LED3 and LED4).
-    1. Count from 0 to 15 in binary and start over again.
-    1. LED1 represents the least significant bit, LED4 the most significant.
-    1. For example: LED1 is ON, all other leds are OFF = '1', LED4 and LED1 are on, the other leds are off = '9'.
-1. Implement a [Gray](https://en.wikipedia.org/wiki/Gray_code) code counter on the four available leds.
-1. Implement a Snake counter on the four leds.
-    |Decimal| 	Binary | Gray | Snake |
-    | --- | --- |   --- |  --- |
-    | 0 | 	0000 |	0000 | 0000 |
-    | 1 | 	0001 | 	0001 | 0001 |
-    | 2 | 	0010 |	0011 | 0011 |
-    | 3 | 	0011 |	0010 | 0111 |
-    | 4 | 	0100 |	0110 | 1111 |
-    | 5 | 	0101 |	0111 | 1110 |
-    | 6 | 	0110 |	0101 | 1100 |
-    | 7 | 	0111 |	0100 | 1000 |
-    | 8 | 	1000 |	1100 | 0000 |
-    | 9 | 	1001 |	1101 | 0001 |
-    | 10 | 	1010 |	1111 | 0011 |
-    | 11 | 	1011 |	1110 | 0111 |
-    | 12 | 	1100 |	1010 | 1111 |
-    | 13 | 	1101 |	1011 | 1110 |
-    | 14 | 	1110 |	1001 | 1100 |
-    | 15 | 	1111 |	1000 | 1000 |
 
 :::warning Assignment
-Write a program which displays the binary, gray and snake counter with a chosen frequency.
+
+1. Use a serial terminal to check the mbed version:
+
+    ```bash
+    mbed sterm
+    ```
+
 :::
 
-## Play a tune
+1. Accept the [GitHub classroom](https://classroom.github.com/a/wlKwOVUg) assignment.
+1. Add the GitHub repository created by GitHub Classroom as the remote of your lab5 repository
 
-1. Use the speaker on the [Mbed Application Board ](https://os.mbed.com/components/mbed-Application-Board/) to play the following tune. 
+    ```bash
+    git remote add origin git@github.com:microcontrollers-2122/lab5-microcontrollers-<your username here>.git
+    ```
+
+1. Add a .gitignore file containing:
+
+    ```text
+    BUILD
+    __pycache__
+    ```
+
+1. Add to the git staging area:
+
+    ```bash
+    git add .
+    ```
+
+1. Commit:
+
+    ```bash
+    git commit -m"initial commit of lab 5"
+    ```
+
+1. Push:
+
+    ```bash
+    git push origin main
+    ```
+
+## PWM
+
+1. Use the speaker on the [Mbed Application Shield](https://os.mbed.com/components/mbed-Application-Shield/) to play the following tune.
     1. Frequency is selected by period = 1.0  / frequency.
     1. Length is selected by setting PWM out at 0.5 and waiting the indicated number of milliseconds.
     1. Delay is selected by setting PWM out at 0 and waiting the indicated number of milliseconds.
@@ -86,32 +109,98 @@ Write a program which displays the binary, gray and snake counter with a chosen 
         | 16 | 	130 |	120 | 100 |
         | 17 | 	98 |	960 | 75 |
 
+This is the initial code to play a note on the speaker of the Mbed Application Shield 
+
+```cpp
+#include "mbed.h"
+#include "platform/mbed_thread.h"
+
+DigitalIn fire(D4);
+PwmOut spkr(D6);
+
+void play_note(float frequency, uint32_t length);
+
+int main()
+{
+    while (true)
+    {
+        while (!fire)
+        {
+        }
+        
+        play_note(110, 480);       
+    }   
+}
+
+void play_note(float frequency, uint32_t length)
+{
+    spkr.period(1.0 / frequency);
+    spkr = 0.5;
+
+    thread_sleep_for(length);
+
+    spkr = 0.0;
+}
+```
+
 :::tip
 Use three arrays: frequencies, lengths and delays
 :::
 
 :::warning Assignment
-Play the tune on the speaker.
+Play the tune on the speaker. Make a new branch, commit and push your code to GitHub.
 :::
 
-## TCP communication
+## ADC
 
-1. Use the Ethernet interface on the Mbed Application Board to set up [TCP communication](https://os.mbed.com/docs/mbed-os/v5.15/apis/network-socket.html) between a client and server. 
-1. Work together and connect both boards (client & server) to a switch.
-    ![Client and Server boards](./assets/client-server.png)
+On the Mbed Application Shield two potentiometers are connected respectively to pins A0 and A1. Also an RGB LED is connected to D5, D8 and D9 for respectively R, G and B.
 
-    Figure 2: The Client initiates communication with the Server, which listens and replies to the Client. Each has a unique IP address. The Server listens on a chosen port, while the client must connect to that port.
-
-    :::danger Warning
-    Choose unique IP addresses for each board in order to avoid conflicts.
-    :::
-1. Example [TCP Server](https://os.mbed.com/users/pcordemans/code/tcp-server/) 
-1. Example [TCP Client](https://os.mbed.com/users/pcordemans/code/tcp-client/)
+The AnalogIN class provides an ADC, while the brightness (and therefore color) of the RGB can be controlled with PWM.
 
 :::warning Assignment
-Expand the TCP examples: read the temperature sensor from the server and display the temperature on the client. 
+Control R and B with the potentiometers.
 :::
 
-:::tip string is not a char array
-One of the easiest ways to manipulate strings is to use the C++ [string](http://www.cplusplus.com/reference/string/string/) class. However a C++ **string** is not an array of characters. The *send* and *recv* methods expect a **char** array so a **string** needs to be converted. The **string** class has a method *c_str* which returns the **char** array equivalent of the **string**.
+## LM75B
+
+The LM75B is a digital temperature sensor.
+
+Import the LM75B library:
+
+```bash
+mbed add http://os.mbed.com/users/chris/code/LM75B/
+```
+
+Example code for reading the temperature every second and send it to the UART:
+
+```cpp
+#include "mbed.h"
+#include "platform/mbed_thread.h"
+#include "LM75B.h"
+
+const uint8_t MAXIMUM_BUFFER_SIZE = 32;
+
+LM75B sensor(D14, D15);
+
+int main()
+{
+    char buffer[MAXIMUM_BUFFER_SIZE] = {0};
+    
+
+    while (true)
+    {
+        int temp = sensor.read();
+        uint8_t length = sprintf(buffer, "%s %d\n", "Temp = ", temp);
+        printf(buffer, length);
+        thread_sleep_for(1000);
+    }   
+}
+```
+
+:::warning Assignment
+Rather than sending the temperature every second. Calculate the moving average every 5 seconds and round to the nearest integer value. Send this value to the pc when the button is pressed. Also change the color of the RGB LED to reflect the current temperature.
 :::
+
+## MMA7660 accellerometer (extra)
+
+Use the [MMA7660 accellerometer](https://os.mbed.com/users/Sissors/code/MMA7660/) to control the behavior of the RGB LED. Note that the library uses the deprecated wait function. Wait accepts a float parameter representing a value in seconds. The function supported by Mbed OS6 thread_sleep_for accepts an integer parameter representing a value in milliseconds. You'll need to convert all waits into a thread_sleep_for.

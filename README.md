@@ -1,4 +1,4 @@
-# devbit-microcontrollers-lab
+# microcontrollers-lab
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6355b9c8-8fca-464b-91e2-020c3a14b75a/deploy-status)](https://app.netlify.com/sites/lab-microcontrollers/deploys)
 
